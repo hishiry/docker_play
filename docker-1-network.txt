@@ -1,0 +1,29 @@
+
+docker network create testlink
+docker network ls
+--net testlink
+
+
+docker run -d \
+--name mariadb \
+-p 3306:3306 \
+-e MYSQL_ROOT_PASSWORD=testlink_root \
+-e MYSQL_DATABASE=testlink_db \
+-e MYSQL_USER=testlink_user \
+-e MYSQL_PASSWORD=testlink_password \
+--network testlink_net \
+mysql:9.5.0
+
+
+
+docker run -d \
+--name testlink-web \
+-p 8180:8080 -p 6443:443 \
+--network testlink_net \
+-e TESTLINK_DATABASE_USER=testlink_user \
+-e TESTLINK_DATABASE_PASSWORD=testlink_password \
+-e TESTLINK_DATABASE_NAME=testlink_db \
+public.ecr.aws/bitnami/testlink:latest
+
+
+mysql -h mariadb -u testlink_user -ptestlink_password
