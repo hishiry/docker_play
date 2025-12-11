@@ -1,0 +1,16 @@
+1.jenkins安装 git、gitlab插件
+2.ssh-key
+  1) jenkins credentials 中添加 “SSH Username with private key”
+    “Private Key” 添加本地ssh-key 私钥
+  2) jenkins job 中 git
+    Repository URL 填入git项目ssh clone地址
+    Credentials 选择刚添加的 credentials
+3.api token
+  1) gitlab中生成api token
+  2) jenkins credentials 中添加 "GitLab API token"
+  3) jenkins config system 中配置 "GitLab" , Credentials 选择刚添加的 API token
+
+参考地址： https://www.cnblogs.com/linagcheng/p/17402174.html
+
+
+
