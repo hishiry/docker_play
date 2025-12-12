@@ -1,0 +1,7 @@
+1. pytest fixture
+2. python 深拷贝 浅拷贝
+3. 框架封装
+4. python 可变数据类型 和 不可变数据类型
+
+
+
